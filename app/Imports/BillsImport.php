@@ -14,8 +14,9 @@ class BillsImport implements ToModel
     */
     public function model(array $row)
     {
-        return new Bill([
-            //
-        ]);
+        // ['id', 'location', 'name', 'bill_type_id', 'turn_in', 'cost', 'is_refund', 'explain', 'remark', 'input_user_id', 'payed_at', 'pay_user_id', 'created_at', 'updated_at']
+        $row['created_at'] = strtotime($row['created_at']) !== false ? date('Y-m-d H:i:s', strtotime($row['created_at'])) : now();
+        $row['updated_at'] = strtotime($row['updated_at']) !== false ? date('Y-m-d H:i:s', strtotime($row['updated_at'])) : now();
+        return new Bill($row);
     }
 }

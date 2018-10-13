@@ -14,8 +14,9 @@ class RepairsImport implements ToModel
     */
     public function model(array $row)
     {
-        return new Repair([
-            //
-        ]);
+        // ['id', 'location', 'name', 'content', 'phone_number', 'input_user_id', 'review_user_id', 'reviewed_at', 'is_passed', 'review_remark', 'printed_at', 'finished_at', 'finisher', 'finish_remark', 'estimate', 'created_at', 'updated_at']
+        $row['created_at'] = strtotime($row['created_at']) !== false ? date('Y-m-d H:i:s', strtotime($row['created_at'])) : now();
+        $row['updated_at'] = strtotime($row['updated_at']) !== false ? date('Y-m-d H:i:s', strtotime($row['updated_at'])) : now();
+        return new Repair($row);
     }
 }
