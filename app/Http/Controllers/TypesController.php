@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Imports\TypesImport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exceptions\ExcelImportErrorException;
 
 class TypesController extends Controller
 {
